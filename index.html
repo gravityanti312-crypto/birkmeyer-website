@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birkmeyer General Contractors, LLC | Built Right</title>
+  <meta name="description" content="Birkmeyer General Contractors, LLC — Delivering excellence in commercial construction across the Greater Phoenix Valley. We plan, build, and manage. Built Right, the first time, every time." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #141414;
+      --navy-deep:   #0B0B0B;
+      --blue:        #B60000;
+      --blue-bright: #E01717;
+      --blue-pale:   #FBEAEA;
+      --ink:         #141414;
+      --slate:       #5A5A5A;
+      --line:        #E6E6E6;
+      --gray-bg:     #F6F6F6;
+      --white:       #FFFFFF;
+      --font-head: 'Archivo', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
+      padding: 8px 0;
+    }
+
+    #navbar.scrolled {
+      background: var(--white);
+      box-shadow: 0 2px 24px rgba(20,20,20,0.10);
+    }
+
+    .nav-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+
+    .logo-img { height: 40px; width: auto; display: block; }
+    /* over the dark hero: show white wordmark; when navbar turns white: show dark wordmark */
+    .logo-dark { display: none; }
+    #navbar.scrolled .logo-light { display: none; }
+    #navbar.scrolled .logo-dark { display: block; }
+    .footer-logo { height: 44px; }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 38px; list-style: none;
+    }
+
+    .nav-links > li > a {
+      color: rgba(255,255,255,0.92);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-weight: 600; font-size: 14.5px;
+      letter-spacing: 0.2px;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links > li > a::after {
+      content: '';
+      position: absolute; left: 0; bottom: -6px;
+      width: 0; height: 2px; background: var(--blue-bright);
+      transition: width 0.25s;
+    }
+    .nav-links > li > a:hover::after { width: 100%; }
+
+    #navbar.scrolled .nav-links > li > a { color: var(--slate); }
+    #navbar.scrolled .nav-links > li > a:hover { color: var(--blue); }
+
+    .nav-cta {
+      background: var(--blue) !important;
+      color: var(--white) !important;
+      padding: 12px 24px;
+      font-weight: 700 !important;
+      font-size: 14px !important;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--blue-bright) !important; transform: translateY(-1px); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 26px; height: 2px;
+      background: var(--white); transition: all 0.3s;
+    }
+    #navbar.scrolled .hamburger span { background: var(--ink); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--navy-deep);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=80');
+      background-size: cover; background-position: center;
+      transform: scale(1.06);
+      animation: heroZoom 18s ease-out forwards;
+    }
+    @keyframes heroZoom { to { transform: scale(1); } }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(11,11,11,0.92) 0%, rgba(11,11,11,0.72) 45%, rgba(11,11,11,0.35) 100%),
+        linear-gradient(0deg, rgba(11,11,11,0.85) 0%, rgba(11,11,11,0) 45%);
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1240px; width: 100%;
+      margin: 0 auto; padding: 140px 28px 180px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      margin-bottom: 26px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 46px; height: 2px; background: var(--blue-bright);
+    }
+    .hero-eyebrow span {
+      font-family: var(--font-head);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 3.5px; text-transform: uppercase;
+      color: var(--blue-bright);
+    }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(46px, 7.5vw, 104px);
+      line-height: 0.98;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -1.5px;
+      margin-bottom: 28px;
+      max-width: 14ch;
+    }
+    .hero-title .accent { color: var(--blue-bright); }
+
+    .hero-desc {
+      max-width: 580px;
+      font-size: 18px; line-height: 1.7;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 42px; font-weight: 400;
+    }
+
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-weight: 700; font-size: 15px;
+      padding: 16px 36px; border-radius: 4px;
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 2px solid var(--blue);
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--blue-bright); border-color: var(--blue-bright); transform: translateY(-2px); }
+    .btn-primary svg { width: 16px; height: 16px; fill: currentColor; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-weight: 700; font-size: 15px;
+      padding: 16px 36px; border-radius: 4px;
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 2px solid rgba(255,255,255,0.45);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+    /* hero stat strip */
+    .hero-stats {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+      background: rgba(182,0,0,0.92);
+      backdrop-filter: blur(6px);
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .trust-inner {
+      max-width: 1240px; margin: 0 auto; padding: 22px 28px;
+      display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+    }
+    .trust-item { display: flex; align-items: center; gap: 16px; padding: 8px 52px; }
+    .trust-item + .trust-item { border-left: 1px solid rgba(255,255,255,0.28); }
+    .trust-icon { width: 32px; height: 32px; fill: var(--white); flex-shrink: 0; }
+    .trust-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .trust-main {
+      font-family: var(--font-head); font-weight: 800;
+      font-size: 18px; color: var(--white); letter-spacing: 0.3px;
+    }
+    .trust-sub {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 11.5px; letter-spacing: 1.2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.82); margin-top: 4px;
+    }
+
+    /* ── SECTION SHARED ── */
+    .section-eyebrow {
+      font-family: var(--font-head);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-eyebrow::before {
+      content: ''; display: block; width: 34px; height: 2px; background: var(--blue); flex-shrink: 0;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(30px, 4vw, 50px);
+      color: var(--ink);
+      letter-spacing: -1px; line-height: 1.05;
+      margin-bottom: 22px;
+    }
+    .section-desc {
+      font-size: 17px; line-height: 1.75; color: var(--slate); max-width: 640px;
+    }
+
+    /* ── PILLARS (Plan. Build. Manage.) ── */
+    #pillars { background: var(--white); padding: 110px 0 90px; }
+    .pillars-head { max-width: 760px; margin: 0 auto 64px; text-align: center; }
+    .pillars-head .section-eyebrow { justify-content: center; }
+    .pillars-head .section-eyebrow::before { display: none; }
+    .pillars-head .section-desc { margin: 0 auto; }
+
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+
+    .pillar {
+      position: relative;
+      padding: 44px 36px 40px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      overflow: hidden;
+    }
+    .pillar::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+    }
+    .pillar:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(20,20,20,0.12); border-color: transparent; }
+    .pillar:hover::before { transform: scaleX(1); }
+
+    .pillar-num {
+      font-family: var(--font-head); font-weight: 900;
+      font-size: 15px; letter-spacing: 1px; color: var(--blue-bright); margin-bottom: 20px;
+    }
+    .pillar-icon {
+      width: 60px; height: 60px; border-radius: 8px;
+      background: var(--blue-pale);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+    }
+    .pillar-icon svg { width: 30px; height: 30px; fill: var(--blue); }
+    .pillar-name {
+      font-family: var(--font-head); font-weight: 800;
+      font-size: 24px; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.3px;
+    }
+    .pillar-desc { font-size: 15.5px; line-height: 1.7; color: var(--slate); }
+
+    /* ── ABOUT ── */
+    #about { padding: 110px 0; background: var(--gray-bg); }
+    .about-grid {
+      display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: center;
+    }
+    .about-image-wrap { position: relative; }
+    .about-image {
+      width: 100%; aspect-ratio: 4/3.2; object-fit: cover;
+      display: block; border-radius: 10px;
+      box-shadow: 0 30px 60px rgba(20,20,20,0.18);
+    }
+    .about-image-accent {
+      position: absolute; bottom: -26px; left: -26px;
+      width: 150px; height: 150px; background: var(--blue);
+      border-radius: 10px; z-index: -1;
+    }
+    .about-badge {
+      position: absolute; right: -18px; top: 36px;
+      background: var(--white); border-radius: 10px;
+      padding: 20px 24px; box-shadow: 0 18px 40px rgba(20,20,20,0.18);
+      text-align: center;
+    }
+    .about-badge .num { font-family: var(--font-head); font-weight: 900; font-size: 34px; color: var(--blue); line-height: 1; }
+    .about-badge .lbl { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--slate); font-weight: 600; margin-top: 4px; }
+
+    .about-body { font-size: 16.5px; line-height: 1.8; color: var(--slate); margin-bottom: 18px; }
+    .about-list { list-style: none; margin: 26px 0 4px; display: grid; gap: 14px; }
+    .about-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15.5px; color: var(--ink); font-weight: 500; }
+    .about-list svg { width: 22px; height: 22px; fill: var(--blue); flex-shrink: 0; margin-top: 1px; }
+
+    /* ── SERVICES ── */
+    #services { padding: 110px 0; background: var(--navy); }
+    #services .section-title { color: var(--white); }
+    .services-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 40px; margin-bottom: 56px; flex-wrap: wrap;
+    }
+    .services-header .section-desc { color: rgba(255,255,255,0.7); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+    .service-card {
+      background: #1a1a1a;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      display: flex; flex-direction: column;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.28);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(0,0,0,0.45); }
+
+    .service-media { position: relative; aspect-ratio: 16/10; overflow: hidden; }
+    .service-media img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.55s;
+    }
+    .service-card:hover .service-media img { transform: scale(1.07); }
+    .service-media-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(11,11,11,0.96) 0%, rgba(11,11,11,0.35) 55%, rgba(11,11,11,0.05) 100%);
+    }
+    .service-icon {
+      position: absolute; top: 14px; left: 14px; z-index: 3;
+      width: 44px; height: 44px; border-radius: 8px;
+      background: rgba(182,0,0,0.95);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-icon svg { width: 22px; height: 22px; fill: var(--white); }
+    .service-name {
+      position: absolute; left: 22px; right: 22px; bottom: 18px; z-index: 3;
+      font-family: var(--font-head); font-weight: 800;
+      font-size: 19px; color: var(--white); line-height: 1.2; margin: 0;
+    }
+    .service-body { padding: 24px 24px 28px; }
+    .service-desc { font-size: 14.5px; line-height: 1.7; color: rgba(255,255,255,0.62); }
+
+    .service-card.feature {
+      background: var(--blue);
+      padding: 40px 34px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .service-card.feature:hover { background: var(--blue-bright); }
+    .service-card.feature .ftxt {
+      font-family: var(--font-head); font-weight: 800; font-size: 23px;
+      color: var(--white); line-height: 1.2; margin-bottom: 22px;
+    }
+    .btn-white {
+      background: var(--white); color: var(--blue);
+      text-decoration: none; font-family: var(--font-body); font-weight: 700; font-size: 14px;
+      padding: 14px 28px; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px;
+      align-self: flex-start; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.2); }
+    .btn-white svg { width: 15px; height: 15px; fill: currentColor; }
+
+    /* ── WORK / PROJECT GALLERY ── */
+    #work { padding: 110px 0 64px; background: var(--white); }
+    .work-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 52px; flex-wrap: wrap; }
+    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .work-card {
+      position: relative; border-radius: 10px; overflow: hidden;
+      aspect-ratio: 4/3.4; display: flex; align-items: flex-end;
+      box-shadow: 0 14px 36px rgba(20,20,20,0.12);
+      background: var(--gray-bg);
+    }
+    .work-card img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.55s;
+    }
+    .work-card:hover img { transform: scale(1.07); }
+    .work-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(11,11,11,0.9) 0%, rgba(11,11,11,0.18) 55%, rgba(11,11,11,0) 100%);
+    }
+    .work-badge {
+      position: absolute; top: 16px; left: 16px; z-index: 3;
+      background: rgba(182,0,0,0.95); color: var(--white);
+      font-family: var(--font-head); font-weight: 700; font-size: 10px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 6px 12px; border-radius: 4px;
+    }
+    .work-content { position: relative; z-index: 2; padding: 26px 24px; }
+    .work-title { font-family: var(--font-head); font-weight: 800; font-size: 20px; color: var(--white); line-height: 1.2; margin-bottom: 4px; }
+    .work-loc { font-size: 13px; color: rgba(255,255,255,0.75); font-weight: 500; }
+    .work-note { text-align: center; margin-top: 36px; font-size: 13.5px; color: var(--slate); font-style: italic; }
+
+    /* ── WHY / VALUES ── */
+    #why { padding: 72px 0 110px; background: var(--gray-bg); }
+    .why-header { text-align: center; max-width: 720px; margin: 0 auto 60px; }
+    .why-header .section-eyebrow { justify-content: center; }
+    .why-header .section-eyebrow::before { display: none; }
+    .why-header .section-desc { margin: 0 auto; }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+    .why-card {
+      background: var(--white); padding: 38px 28px; border-radius: 10px;
+      border: 1px solid var(--line);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .why-card:hover { transform: translateY(-6px); box-shadow: 0 22px 46px rgba(20,20,20,0.12); }
+    .why-icon {
+      width: 56px; height: 56px; border-radius: 8px; background: var(--blue-pale);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
+    }
+    .why-icon svg { width: 28px; height: 28px; fill: var(--blue); }
+    .why-title { font-family: var(--font-head); font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 12px; }
+    .why-desc { font-size: 14.5px; line-height: 1.7; color: var(--slate); }
+
+    /* ── CTA BANNER ── */
+    #cta-banner { position: relative; padding: 96px 0; background: var(--navy-deep); overflow: hidden; }
+    .cta-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2000&q=80');
+      background-size: cover; background-position: center; opacity: 0.22;
+    }
+    .cta-inner {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap;
+    }
+    .cta-heading {
+      font-family: var(--font-head); font-weight: 800;
+      font-size: clamp(28px, 4vw, 46px); color: var(--white); line-height: 1.1;
+      letter-spacing: -0.8px; margin-bottom: 14px;
+    }
+    .cta-heading .accent { color: var(--blue-bright); }
+    .cta-sub { font-size: 17px; color: rgba(255,255,255,0.78); max-width: 540px; line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    #contact { padding: 110px 0; background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 72px; align-items: start; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 30px; }
+    .contact-icon {
+      width: 48px; height: 48px; border-radius: 8px; background: var(--blue-pale);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-icon svg { width: 22px; height: 22px; fill: var(--blue); }
+    .contact-detail-label {
+      font-family: var(--font-head); font-weight: 700; font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 5px;
+    }
+    .contact-detail-value { font-size: 16px; color: var(--ink); font-weight: 600; }
+
+    .contact-form { background: var(--gray-bg); padding: 40px; border-radius: 12px; border: 1px solid var(--line); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+    .form-group label {
+      font-family: var(--font-body); font-size: 12.5px; font-weight: 600;
+      letter-spacing: 0.3px; color: var(--ink);
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 14px 16px; border: 1.5px solid var(--line); border-radius: 6px;
+      font-family: var(--font-body); font-size: 15px; color: var(--ink);
+      background: var(--white); outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%; appearance: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--blue); box-shadow: 0 0 0 3px rgba(224,23,23,0.15);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      background: var(--blue); color: var(--white); border: none; border-radius: 6px;
+      font-family: var(--font-body); font-weight: 700; font-size: 15px;
+      padding: 16px 40px; cursor: pointer; transition: background 0.2s, transform 0.2s; width: 100%;
+    }
+    .form-submit:hover { background: var(--blue-bright); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy-deep); padding: 72px 0 34px; }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 56px;
+      padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px;
+    }
+    .footer-brand .logo { margin-bottom: 22px; display: inline-flex; }
+    .footer-brand .logo-text span:first-child { color: var(--white); }
+    .footer-tagline { font-size: 14.5px; line-height: 1.75; color: rgba(255,255,255,0.55); max-width: 320px; }
+    .footer-license {
+      display: inline-block; margin-top: 18px;
+      font-family: var(--font-head); font-weight: 700; font-size: 12px;
+      letter-spacing: 0.5px; color: rgba(255,255,255,0.85);
+      padding: 8px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 5px;
+    }
+    .footer-col-title {
+      font-family: var(--font-head); font-weight: 700; font-size: 12px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { color: rgba(255,255,255,0.62); text-decoration: none; font-size: 14.5px; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13.5px; color: rgba(255,255,255,0.42); }
+    .footer-copy span { color: var(--blue-bright); font-weight: 600; }
+
+    /* ── MOBILE NAV ── */
+    .mobile-menu {
+      display: none; position: fixed; top: 0; right: 0; bottom: 0;
+      width: 300px; max-width: 84vw; background: var(--navy-deep); z-index: 1001;
+      flex-direction: column; padding: 100px 32px 32px; gap: 6px;
+      box-shadow: -10px 0 40px rgba(0,0,0,0.4); transform: translateX(100%); transition: transform 0.32s;
+    }
+    .mobile-menu.open { display: flex; transform: translateX(0); }
+    .mobile-menu a {
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      font-family: var(--font-head); font-weight: 600; font-size: 16px;
+      padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-menu a.nav-cta {
+      background: var(--blue); color: var(--white); text-align: center;
+      padding: 15px; border-radius: 5px; border-bottom: none; margin-top: 18px;
+    }
+    .mobile-close {
+      position: absolute; top: 24px; right: 28px; background: none; border: none;
+      color: var(--white); font-size: 30px; cursor: pointer; line-height: 1;
+    }
+    .menu-backdrop {
+      display: none; position: fixed; inset: 0; background: rgba(11,11,11,0.55); z-index: 1000;
+    }
+    .menu-backdrop.open { display: block; }
+
+    /* ── QUOTE BUILDER ── */
+    .qb-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(11,11,11,0.72); backdrop-filter: blur(5px);
+      display: none; align-items: center; justify-content: center; padding: 24px;
+    }
+    .qb-overlay.open { display: flex; }
+    .qb-modal {
+      background: var(--white); border-radius: 14px;
+      width: 100%; max-width: 660px; max-height: 92vh;
+      display: flex; flex-direction: column; overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.55);
+      animation: qbIn 0.32s ease;
+    }
+    @keyframes qbIn { from { opacity: 0; transform: translateY(22px) scale(0.98); } to { opacity: 1; transform: none; } }
+    .qb-header { padding: 26px 32px 22px; border-bottom: 1px solid var(--line); position: relative; }
+    .qb-eyebrow {
+      font-family: var(--font-head); font-weight: 700; font-size: 11px;
+      letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 8px;
+    }
+    .qb-title { font-family: var(--font-head); font-weight: 800; font-size: 23px; color: var(--ink); letter-spacing: -0.3px; }
+    .qb-progress { height: 6px; background: var(--line); border-radius: 6px; margin-top: 18px; overflow: hidden; }
+    .qb-progress-bar { height: 100%; width: 20%; background: var(--blue); border-radius: 6px; transition: width 0.35s ease; }
+    .qb-step-label {
+      font-family: var(--font-body); font-weight: 600; font-size: 11.5px;
+      letter-spacing: 0.8px; text-transform: uppercase; color: var(--slate); margin-top: 10px;
+    }
+    .qb-close {
+      position: absolute; top: 18px; right: 22px; background: none; border: none;
+      font-size: 30px; line-height: 1; color: var(--slate); cursor: pointer; transition: color 0.2s;
+    }
+    .qb-close:hover { color: var(--ink); }
+    .qb-body { padding: 28px 32px; overflow-y: auto; }
+    .qb-step { display: none; }
+    .qb-step.active { display: block; animation: qbStepIn 0.3s ease; }
+    @keyframes qbStepIn { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+    .qb-q { font-family: var(--font-head); font-weight: 800; font-size: 21px; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.2px; }
+    .qb-hint { font-size: 14.5px; color: var(--slate); margin-bottom: 22px; line-height: 1.5; }
+    .qb-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .qb-option {
+      display: flex; align-items: center; gap: 12px;
+      padding: 16px 18px; border: 2px solid var(--line); border-radius: 9px;
+      cursor: pointer; font-family: var(--font-body); font-weight: 600; font-size: 15px;
+      color: var(--ink); background: var(--white); text-align: left; transition: border-color 0.15s, background 0.15s;
+    }
+    .qb-option:hover { border-color: var(--blue); }
+    .qb-option.selected { border-color: var(--blue); background: var(--blue-pale); }
+    .qb-option .qb-check {
+      margin-left: auto; width: 22px; height: 22px; border-radius: 50%;
+      border: 2px solid var(--line); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background 0.15s, border-color 0.15s;
+    }
+    .qb-option.selected .qb-check { background: var(--blue); border-color: var(--blue); }
+    .qb-option .qb-check svg { width: 12px; height: 12px; fill: #fff; opacity: 0; transition: opacity 0.15s; }
+    .qb-option.selected .qb-check svg { opacity: 1; }
+    .qb-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .qb-field { display: flex; flex-direction: column; gap: 6px; }
+    .qb-field.full { grid-column: 1 / -1; }
+    .qb-field label { font-family: var(--font-body); font-size: 12.5px; font-weight: 600; color: var(--ink); }
+    .qb-field input, .qb-field textarea {
+      padding: 13px 15px; border: 1.5px solid var(--line); border-radius: 7px;
+      font-family: var(--font-body); font-size: 15px; color: var(--ink); background: var(--white);
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%;
+    }
+    .qb-field textarea { resize: vertical; min-height: 84px; }
+    .qb-field input:focus, .qb-field textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(224,23,23,0.14); }
+    .qb-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 32px; border-top: 1px solid var(--line); }
+    .qb-back { background: none; border: none; color: var(--slate); font-family: var(--font-body); font-weight: 600; font-size: 15px; cursor: pointer; padding: 12px 16px; }
+    .qb-back:disabled { opacity: 0.35; cursor: default; }
+    .qb-next {
+      background: var(--blue); color: #fff; border: none; border-radius: 7px;
+      padding: 14px 34px; font-family: var(--font-body); font-weight: 700; font-size: 15px;
+      cursor: pointer; transition: background 0.2s, transform 0.15s; margin-left: auto;
+    }
+    .qb-next:hover:not(:disabled) { background: var(--blue-bright); transform: translateY(-1px); }
+    .qb-next:disabled { opacity: 0.45; cursor: default; }
+    /* success */
+    .qb-success { text-align: center; padding: 14px 4px 8px; }
+    .qb-success-icon {
+      width: 76px; height: 76px; border-radius: 50%; background: #1e9e5a;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 22px;
+    }
+    .qb-success-icon svg { width: 38px; height: 38px; fill: #fff; }
+    .qb-success h3 { font-family: var(--font-head); font-weight: 800; font-size: 25px; color: var(--ink); margin-bottom: 12px; }
+    .qb-success p { font-size: 15.5px; line-height: 1.6; color: var(--slate); max-width: 420px; margin: 0 auto 22px; }
+    .qb-summary { background: var(--gray-bg); border: 1px solid var(--line); border-radius: 10px; padding: 18px 22px; text-align: left; max-width: 420px; margin: 0 auto; }
+    .qb-summary-row { display: flex; justify-content: space-between; gap: 16px; padding: 7px 0; font-size: 14px; }
+    .qb-summary-row + .qb-summary-row { border-top: 1px solid var(--line); }
+    .qb-summary-row .k { color: var(--slate); font-weight: 500; }
+    .qb-summary-row .v { color: var(--ink); font-weight: 700; text-align: right; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 920px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 70px; }
+      .about-image-wrap { order: -1; max-width: 520px; }
+      .about-badge { right: 16px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .work-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 600px) {
+      .hero-content { padding: 130px 24px 220px; }
+      .trust-inner { flex-direction: column; padding: 18px 24px; }
+      .trust-item { padding: 12px 0; width: 100%; justify-content: center; }
+      .trust-item + .trust-item { border-left: none; border-top: 1px solid rgba(255,255,255,0.24); }
+      .services-grid { grid-template-columns: 1fr; }
+      .work-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 36px; }
+      .contact-form { padding: 28px 22px; }
+      .qb-overlay { padding: 0; }
+      .qb-modal { max-width: 100%; max-height: 100vh; height: 100%; border-radius: 0; }
+      .qb-options { grid-template-columns: 1fr; }
+      .qb-fields { grid-template-columns: 1fr; }
+      .qb-header { padding: 22px 22px 18px; }
+      .qb-body { padding: 24px 22px; }
+      .qb-footer { padding: 16px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="logo">
+      <img src="brand-logo-white.png" alt="Birkmeyer General Contractors, LLC" class="logo-img logo-light" />
+      <img src="brand-logo.png" alt="Birkmeyer General Contractors, LLC" class="logo-img logo-dark" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#work">Our Work</a></li>
+      <li><a href="#pillars">What We Do</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#" class="nav-cta" onclick="openQuote();return false;">Get a Quote</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="menu-backdrop" id="backdrop" onclick="closeMenu()"></div>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" onclick="closeMenu()" aria-label="Close">&times;</button>
+  <a href="#work" onclick="closeMenu()">Our Work</a>
+  <a href="#pillars" onclick="closeMenu()">What We Do</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#why" onclick="closeMenu()">Why Us</a>
+  <a href="#" class="nav-cta" onclick="closeMenu();openQuote();return false;">Get a Quote</a>
+</div>
+
+<!-- QUOTE BUILDER MODAL -->
+<div class="qb-overlay" id="qbOverlay" onclick="if(event.target===this)closeQuote()">
+  <div class="qb-modal" role="dialog" aria-modal="true" aria-label="Quote builder">
+    <div class="qb-header">
+      <button class="qb-close" onclick="closeQuote()" aria-label="Close">&times;</button>
+      <div class="qb-eyebrow">Free · No Obligation</div>
+      <div class="qb-title">Build Your Quote</div>
+      <div class="qb-progress"><div class="qb-progress-bar" id="qbBar"></div></div>
+      <div class="qb-step-label" id="qbStepLabel">Step 1 of 5</div>
+    </div>
+
+    <div class="qb-body" id="qbBody">
+
+      <!-- Step 1: project type -->
+      <div class="qb-step active" data-step="1">
+        <div class="qb-q">What type of project is it?</div>
+        <div class="qb-hint">Pick the option that best describes your build.</div>
+        <div class="qb-options">
+          <div class="qb-option" data-group="Project Type" data-value="Restaurant / QSR">Restaurant / QSR <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+          <div class="qb-option" data-group="Project Type" data-value="Retail Ground-Up">Retail Ground-Up <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+          <div class="qb-option" data-group="Project Type" data-value="Tenant Improvement">Tenant Improvement <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+          <div class="qb-option" data-group="Project Type" data-value="Landlord Coordination">Landlord Coordination <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+          <div class="qb-option" data-group="Project Type" data-value="Other / Not sure">Other / Not sure <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+        </div>
+      </div>
+
+      <!-- Step 2: size -->
+      <div class="qb-step" data-step="2">
+        <div class="qb-q">Roughly how big is the space?</div>
+        <div class="qb-hint">An estimate is fine — it just helps us scope the bid.</div>
+        <div class="qb-options">
+          <div class="qb-option" data-group="Project Size" data-value="Under 2,000 sq ft">Under 2,000 sq ft <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+          <div class="qb-option" data-group="Project Size" data-value="2,000–5,000 sq ft">2,000–5,000 sq ft <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+          <div class="qb-option" data-group="Project Size" data-value="5,000–15,000 sq ft">5,000–15,000 sq ft <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+          <div class="qb-option" data-group="Project Size" data-value="15,000+ sq ft / Not sure">15,000+ / Not sure <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+        </div>
+      </div>
+
+      <!-- Step 3: timeline -->
+      <div class="qb-step" data-step="3">
+        <div class="qb-q">When do you want to start?</div>
+        <div class="qb-hint">This helps us prioritize and plan crews.</div>
+        <div class="qb-options">
+          <div class="qb-option" data-group="Timeline" data-value="Ready now / ASAP">Ready now / ASAP <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+          <div class="qb-option" data-group="Timeline" data-value="Within 1–3 months">Within 1–3 months <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+          <div class="qb-option" data-group="Timeline" data-value="3–6 months">3–6 months <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+          <div class="qb-option" data-group="Timeline" data-value="Just exploring">Just exploring <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+        </div>
+      </div>
+
+      <!-- Step 4: budget -->
+      <div class="qb-step" data-step="4">
+        <div class="qb-q">What's your estimated budget?</div>
+        <div class="qb-hint">Optional ballpark — it helps us tailor the right solution.</div>
+        <div class="qb-options">
+          <div class="qb-option" data-group="Budget" data-value="Under $100k">Under $100k <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+          <div class="qb-option" data-group="Budget" data-value="$100k–$500k">$100k–$500k <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+          <div class="qb-option" data-group="Budget" data-value="$500k–$1M">$500k–$1M <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+          <div class="qb-option" data-group="Budget" data-value="$1M or more">$1M or more <span class="qb-check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+        </div>
+      </div>
+
+      <!-- Step 5: contact -->
+      <div class="qb-step" data-step="5">
+        <div class="qb-q">Where should we send your quote?</div>
+        <div class="qb-hint">We'll review your project and follow up within one business day.</div>
+        <div class="qb-fields">
+          <div class="qb-field"><label for="qbFirst">First Name *</label><input id="qbFirst" type="text" placeholder="John" /></div>
+          <div class="qb-field"><label for="qbLast">Last Name *</label><input id="qbLast" type="text" placeholder="Smith" /></div>
+          <div class="qb-field full"><label for="qbCompany">Company</label><input id="qbCompany" type="text" placeholder="Company name (optional)" /></div>
+          <div class="qb-field"><label for="qbPhone">Phone *</label><input id="qbPhone" type="tel" placeholder="(480) 000-0000" /></div>
+          <div class="qb-field"><label for="qbEmail">Email *</label><input id="qbEmail" type="email" placeholder="john@company.com" /></div>
+          <div class="qb-field full"><label for="qbNotes">Tell us a bit about your project</label><textarea id="qbNotes" rows="3" placeholder="Location, scope, anything else we should know… (optional)"></textarea></div>
+        </div>
+      </div>
+
+      <!-- Success -->
+      <div class="qb-step" data-step="6">
+        <div class="qb-success">
+          <div class="qb-success-icon"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></div>
+          <h3>Thanks — request received!</h3>
+          <p>We've got your project details. A member of the Birkmeyer team will reach out within one business day to talk through your quote.</p>
+          <div class="qb-summary" id="qbSummary"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="qb-footer" id="qbFooter">
+      <button class="qb-back" id="qbBack" onclick="qbPrev()" disabled>Back</button>
+      <button class="qb-next" id="qbNext" onclick="qbNext()" disabled>Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span>Greater Phoenix Valley · Commercial Construction</span></div>
+    <h1 class="hero-title">Built Right. <span class="accent">The First Time. Every Time.</span></h1>
+    <p class="hero-desc">Delivering excellence in commercial construction — we plan, build, and manage with transparency, accountability, and true partnership, from ground-up builds to complex tenant improvements.</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn-primary" onclick="openQuote();return false;">Build Your Quote
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#pillars" class="btn-outline">What We Do</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        <div class="trust-text">
+          <span class="trust-main">AZ ROC #362140</span>
+          <span class="trust-sub">Licensed Arizona Contractor</span>
+        </div>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+        <div class="trust-text">
+          <span class="trust-main">Licensed, Bonded &amp; Insured</span>
+          <span class="trust-sub">Fully Covered &amp; Compliant</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <div>
+        <div class="section-eyebrow">What We Do</div>
+        <h2 class="section-title">Everything We Do</h2>
+      </div>
+      <p class="section-desc">From restaurants to retail, every service Birkmeyer General Contractors brings to your commercial project — built right, the first time, every time.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" alt="Service photo placeholder" />
+          <div class="service-media-overlay"></div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-8-15.03-8-15.03 0h15.03zM1.02 17h15v2h-15z"/></svg>
+          </div>
+          <div class="service-name">Restaurant &amp; QSR Construction</div>
+        </div>
+        <div class="service-body">
+          <p class="service-desc">Full build-out and renovation for restaurants and quick-service concepts — tight timelines, complex MEP, and high-traffic finishes handled with care.</p>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=900&q=80" alt="Service photo placeholder" />
+          <div class="service-media-overlay"></div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+          </div>
+          <div class="service-name">Retail Ground-Up &amp; Tenant Improvements</div>
+        </div>
+        <div class="service-body">
+          <p class="service-desc">From shell to turnkey, we handle ground-up retail construction and comprehensive tenant improvements built to impress and built to last.</p>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1581094480596-7e4d7cc70a08?auto=format&fit=crop&w=900&q=80" alt="Service photo placeholder" />
+          <div class="service-media-overlay"></div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"/></svg>
+          </div>
+          <div class="service-name">Landlord Coordination</div>
+        </div>
+        <div class="service-body">
+          <p class="service-desc">We manage every touchpoint with property owners and managers to keep your project approved, compliant, and moving forward.</p>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80" alt="Service photo placeholder" />
+          <div class="service-media-overlay"></div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+          </div>
+          <div class="service-name">Scheduling &amp; Cost Control</div>
+        </div>
+        <div class="service-body">
+          <p class="service-desc">Proven systems track progress, flag issues early, and keep your project on time and on budget — proactive management, zero surprises.</p>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-media">
+          <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=900&q=80" alt="Service photo placeholder" />
+          <div class="service-media-overlay"></div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+          </div>
+          <div class="service-name">Communication &amp; Accountability</div>
+        </div>
+        <div class="service-body">
+          <p class="service-desc">Consistent updates, fast responses, and a single point of contact — because you deserve a contractor who stays in the loop with you.</p>
+        </div>
+      </div>
+
+      <div class="service-card feature reveal">
+        <p class="ftxt">Ready to start your next project?</p>
+        <a href="#" class="btn-white" onclick="openQuote();return false;">Build Your Quote
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS: Plan. Build. Manage. -->
+<section id="pillars">
+  <div class="container">
+    <div class="pillars-head reveal">
+      <div class="section-eyebrow">What We Do</div>
+      <h2 class="section-title">Plan. Build. Manage.</h2>
+      <p class="section-desc">From the first set of drawings to the final walkthrough, we deliver every phase of your commercial project with precision and partnership.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar reveal">
+        <div class="pillar-num">01</div>
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3V3zm0 16h18v2H3v-2zM5 7h6v10H5V7zm8 0h6v4h-6V7zm0 6h6v4h-6v-4z"/></svg>
+        </div>
+        <div class="pillar-name">Plan</div>
+        <p class="pillar-desc">Preconstruction done right. We align scope, budget, and schedule before a shovel hits the ground — with transparent estimating and proactive landlord coordination.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar-num">02</div>
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 9 12 2 2 9v2h2v9h6v-6h4v6h6v-9h2V9zm-6 8h-2v-6h-4v6H6v-7.19l6-4.2 6 4.2V17z"/></svg>
+        </div>
+        <div class="pillar-name">Build</div>
+        <p class="pillar-desc">Quality commercial construction delivered to the highest standards — restaurants, retail, and tenant improvements built to impress and built to last.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar-num">03</div>
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+        </div>
+        <div class="pillar-name">Manage</div>
+        <p class="pillar-desc">Proactive scheduling, cost control, and one clear point of contact. You'll always know exactly where your project stands — no surprises, just progress.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap reveal">
+        <img
+          src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1000&q=80"
+          alt="Birkmeyer General Contractors team reviewing plans on site"
+          class="about-image"
+        />
+        <div class="about-image-accent"></div>
+        <div class="about-badge">
+          <div class="num">15+</div>
+          <div class="lbl">Years Building</div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-eyebrow">About Us</div>
+        <h2 class="section-title">Your Partner in<br>Every Build</h2>
+        <p class="about-body">At Birkmeyer General Contractors, LLC, we deliver quality commercial construction across the Greater Phoenix Valley. From quick-service restaurants to large-scale retail developments, we bring the same commitment to every project: do it right, the first time.</p>
+        <p class="about-body">We believe the best builds start with the best relationships. Transparency and partnership aren't buzzwords here — they're the foundation of how we operate.</p>
+        <ul class="about-list">
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Transparent pricing &amp; honest timelines</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>One clear point of contact, start to finish</li>
+          <li><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Built to the highest construction standards</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR WORK (project gallery — PLACEHOLDER images, swap for Birkmeyer's real photos) -->
+<section id="work">
+  <div class="container">
+    <div class="work-head reveal">
+      <div>
+        <div class="section-eyebrow">Our Work</div>
+        <h2 class="section-title">Recent Projects</h2>
+      </div>
+      <p class="section-desc">A look at commercial spaces Birkmeyer has brought to life across the Greater Phoenix Valley.</p>
+    </div>
+    <div class="work-grid">
+
+      <div class="work-card reveal">
+        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=80" alt="Project photo placeholder" />
+        <span class="work-badge">Restaurant / QSR</span>
+        <div class="work-overlay"></div>
+        <div class="work-content">
+          <div class="work-title">Quick-Service Build-Out</div>
+          <div class="work-loc">Phoenix, AZ</div>
+        </div>
+      </div>
+
+      <div class="work-card reveal">
+        <img src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?auto=format&fit=crop&w=900&q=80" alt="Project photo placeholder" />
+        <span class="work-badge">Retail</span>
+        <div class="work-overlay"></div>
+        <div class="work-content">
+          <div class="work-title">Ground-Up Retail Center</div>
+          <div class="work-loc">Scottsdale, AZ</div>
+        </div>
+      </div>
+
+      <div class="work-card reveal">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80" alt="Project photo placeholder" />
+        <span class="work-badge">Tenant Improvement</span>
+        <div class="work-overlay"></div>
+        <div class="work-content">
+          <div class="work-title">Commercial TI Renovation</div>
+          <div class="work-loc">Tempe, AZ</div>
+        </div>
+      </div>
+
+      <div class="work-card reveal">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80" alt="Project photo placeholder" />
+        <span class="work-badge">Ground-Up</span>
+        <div class="work-overlay"></div>
+        <div class="work-content">
+          <div class="work-title">New Commercial Build</div>
+          <div class="work-loc">Mesa, AZ</div>
+        </div>
+      </div>
+
+      <div class="work-card reveal">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Project photo placeholder" />
+        <span class="work-badge">Restaurant / QSR</span>
+        <div class="work-overlay"></div>
+        <div class="work-content">
+          <div class="work-title">Full-Service Restaurant</div>
+          <div class="work-loc">Chandler, AZ</div>
+        </div>
+      </div>
+
+      <div class="work-card reveal">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80" alt="Project photo placeholder" />
+        <span class="work-badge">Retail</span>
+        <div class="work-overlay"></div>
+        <div class="work-content">
+          <div class="work-title">Storefront Remodel</div>
+          <div class="work-loc">Gilbert, AZ</div>
+        </div>
+      </div>
+
+    </div>
+    <p class="work-note">Placeholder images shown — these will be replaced with photos of Birkmeyer's completed projects.</p>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="container">
+    <div class="why-header reveal">
+      <div class="section-eyebrow">Why Birkmeyer</div>
+      <h2 class="section-title">The Birkmeyer Difference</h2>
+      <p class="section-desc">The values that show up on every job site, in every conversation, on every build.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+        </div>
+        <div class="why-title">Integrity First</div>
+        <p class="why-desc">Total transparency on pricing, timelines, and challenges — no hidden costs, no surprises.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+        </div>
+        <div class="why-title">On-Time Delivery</div>
+        <p class="why-desc">Proactive scheduling and milestone tracking ensure your project finishes when it's supposed to.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        </div>
+        <div class="why-title">True Partnership</div>
+        <p class="why-desc">We treat every project like it's our own — your goals and deadlines become ours.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+        </div>
+        <div class="why-title">Built Right, Every Time</div>
+        <p class="why-desc">Quality isn't negotiable. We hold the highest standards so you don't have to call us back.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="cta-banner">
+  <div class="cta-bg"></div>
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-text reveal">
+        <h2 class="cta-heading">Let's build something<br><span class="accent">great together.</span></h2>
+        <p class="cta-sub">Serving the Greater Phoenix Valley with commercial construction you can count on. Reach out today for a no-obligation consultation.</p>
+      </div>
+      <a href="#" class="btn-primary reveal" style="flex-shrink:0;" onclick="openQuote();return false;">Build Your Quote
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="section-eyebrow">Contact Us</div>
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-desc" style="margin-bottom:42px;">Ready to discuss your next commercial project? Reach out and we'll follow up within one business day.</p>
+
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Phone</div>
+            <a class="contact-detail-value" href="tel:+14807346498" style="text-decoration:none;">(480) 734-6498</a>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <a class="contact-detail-value" href="mailto:adam@mitchellgcinc.com" style="text-decoration:none;">adam@mitchellgcinc.com</a>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Service Area</div>
+            <div class="contact-detail-value">Greater Phoenix Valley, AZ</div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          </div>
+          <div>
+            <div class="contact-detail-label">Licensed &amp; Insured</div>
+            <div class="contact-detail-value">ROC #362140 · Licensed, Bonded &amp; Insured</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="john@company.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(480) 555-0100" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">Project Type</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option>Restaurant / QSR Build-Out</option>
+              <option>Retail Ground-Up Construction</option>
+              <option>Tenant Improvement</option>
+              <option>Landlord Coordination</option>
+              <option>Other / General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Project Details</label>
+            <textarea id="message" name="message" placeholder="Tell us about your project — scope, timeline, location, etc."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#hero" class="logo">
+          <img src="brand-logo-white.png" alt="Birkmeyer General Contractors, LLC" class="logo-img footer-logo" />
+        </a>
+        <p class="footer-tagline">Quality commercial construction in the Greater Phoenix Valley. We plan, build, and manage — Built Right, the first time, every time.</p>
+        <p class="footer-license">ROC #362140 &nbsp;·&nbsp; Licensed, Bonded &amp; Insured</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#work">Our Work</a></li>
+          <li><a href="#pillars">What We Do</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why Birkmeyer</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Restaurant &amp; QSR</a></li>
+          <li><a href="#services">Retail Construction</a></li>
+          <li><a href="#services">Tenant Improvements</a></li>
+          <li><a href="#services">Project Management</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Get in Touch</div>
+        <ul class="footer-links">
+          <li><a href="tel:+14807346498">(480) 734-6498</a></li>
+          <li><a href="mailto:adam@mitchellgcinc.com">adam@mitchellgcinc.com</a></li>
+          <li><a href="#contact">Request a Quote</a></li>
+          <li><a href="#hero">Greater Phoenix Valley, AZ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 <span>Birkmeyer General Contractors, LLC</span>. All rights reserved.</p>
+      <p class="footer-copy">Built Right — <span>the first time, every time.</span></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll state
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const backdrop = document.getElementById('backdrop');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.add('open');
+    backdrop.classList.add('open');
+  });
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    backdrop.classList.remove('open');
+  }
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Message Sent!';
+    btn.style.background = '#1e9e5a';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send Message';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3000);
+  }
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = (entry.target.dataset.delay || (i % 3) * 0.08) + 's';
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ── QUOTE BUILDER ──
+  const qbState = { step: 1, total: 5, answers: {} };
+
+  function openQuote() {
+    document.getElementById('qbOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    qbReset();
+  }
+  function closeQuote() {
+    document.getElementById('qbOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function qbReset() {
+    qbState.step = 1;
+    qbState.answers = {};
+    document.querySelectorAll('.qb-option.selected').forEach(o => o.classList.remove('selected'));
+    ['qbFirst','qbLast','qbCompany','qbPhone','qbEmail','qbNotes'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    document.getElementById('qbFooter').style.display = 'flex';
+    qbShow();
+  }
+
+  function qbShow() {
+    const s = qbState.step;
+    document.querySelectorAll('.qb-step').forEach(el => el.classList.toggle('active', +el.dataset.step === s));
+    document.getElementById('qbBar').style.width = Math.round((s / qbState.total) * 100) + '%';
+    document.getElementById('qbStepLabel').textContent = 'Step ' + s + ' of ' + qbState.total;
+    document.getElementById('qbBack').disabled = s === 1;
+    const next = document.getElementById('qbNext');
+    next.textContent = s === qbState.total ? 'Get My Free Quote' : 'Continue';
+    next.disabled = !qbStepValid();
+  }
+
+  function qbStepValid() {
+    const s = qbState.step;
+    const groups = { 1: 'Project Type', 2: 'Project Size', 3: 'Timeline', 4: 'Budget' };
+    if (groups[s]) return !!qbState.answers[groups[s]];
+    if (s === 5) {
+      const v = id => (document.getElementById(id).value || '').trim();
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('qbEmail'));
+      return v('qbFirst') && v('qbLast') && v('qbPhone') && emailOk;
+    }
+    return true;
+  }
+
+  // option selection (event delegation)
+  document.getElementById('qbBody').addEventListener('click', e => {
+    const opt = e.target.closest('.qb-option');
+    if (!opt) return;
+    const group = opt.dataset.group;
+    opt.parentElement.querySelectorAll('.qb-option').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    qbState.answers[group] = opt.dataset.value;
+    document.getElementById('qbNext').disabled = false;
+  });
+
+  // live-validate contact inputs
+  document.getElementById('qbBody').addEventListener('input', e => {
+    if (e.target.closest('.qb-field') && qbState.step === 5) {
+      document.getElementById('qbNext').disabled = !qbStepValid();
+    }
+  });
+
+  function qbPrev() { if (qbState.step > 1) { qbState.step--; qbShow(); } }
+
+  function qbNext() {
+    if (!qbStepValid()) return;
+    if (qbState.step < qbState.total) { qbState.step++; qbShow(); return; }
+    // final submit
+    const v = id => (document.getElementById(id).value || '').trim();
+    qbState.answers['Name'] = v('qbFirst') + ' ' + v('qbLast');
+    if (v('qbCompany')) qbState.answers['Company'] = v('qbCompany');
+    qbState.answers['Phone'] = v('qbPhone');
+    qbState.answers['Email'] = v('qbEmail');
+    if (v('qbNotes')) qbState.answers['Project Details'] = v('qbNotes');
+    qbSubmit();
+  }
+
+  function qbSubmit() {
+    // NOTE: no backend yet — this shows the confirmation screen.
+    // Hook this to email/SMS (Formspree, Resend, etc.) to deliver leads to Adam.
+    const order = ['Project Type','Project Size','Timeline','Budget','Name','Company','Phone','Email','Project Details'];
+    const rows = order.filter(k => qbState.answers[k]).map(k =>
+      '<div class="qb-summary-row"><span class="k">' + k + '</span><span class="v">' + qbState.answers[k] + '</span></div>'
+    ).join('');
+    document.getElementById('qbSummary').innerHTML = rows;
+    document.querySelectorAll('.qb-step').forEach(el => el.classList.toggle('active', el.dataset.step === '6'));
+    document.getElementById('qbBar').style.width = '100%';
+    document.getElementById('qbStepLabel').textContent = 'Complete';
+    document.getElementById('qbFooter').style.display = 'none';
+  }
+
+  // close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('qbOverlay').classList.contains('open')) closeQuote();
+  });
+</script>
+</body>
+</html>
